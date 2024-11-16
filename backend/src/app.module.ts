@@ -1,18 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from './shared/database/database.module';
+// import { TourManagementModule } from './tour-management/tour.module';
+// import { VisitorManagementModule } from './visitor-management/visitor.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'nus_user',
-      password: 'nus_password',
-      database: 'nus_tour',
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
+    DatabaseModule,
+    AuthModule,
+    // TourManagementModule,
+    // VisitorManagementModule,
   ],
 })
 export class AppModule {}
